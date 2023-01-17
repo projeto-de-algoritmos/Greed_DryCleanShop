@@ -9,6 +9,7 @@ int main() {
     opa.insertClothes();
     opa.insertClothes();
 
+    std::cout << '\n';
     opa.init();
 
     return 0;

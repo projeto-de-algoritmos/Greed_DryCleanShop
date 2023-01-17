@@ -24,9 +24,11 @@ void Greed::insertClothes() {
         if(size[i] == 0) break;
     }
 
+    //system("clear");
+
     // std::cout << "Insira o nome do solicitante: ";
     // std::cin >> nameValue;
-    std::cout << "Insira o kg de roupas: ";
+    std::cout << "Insira o numero de conjunto de roupas: ";
     std::cin >> sizeValue;
     std::cout << "Insira o prazo do horario para entrega: ";
     std::cin >> timeValue;
@@ -39,6 +41,11 @@ void Greed::insertClothes() {
 
 void Greed::init() {
     std::vector<std::pair<int,int>> clothes;
+    int delay = 0;
+    int day = 0;
+    int hours = 8;
+    int hoursInterval = 0;
+    int realtime = 0;
 
     for(int j=0; j<MAX; j++) if(size[j] != 0) totalClothes++;
 
@@ -63,17 +70,65 @@ void Greed::init() {
         t += clothes[i].first;
     }
 
-    int delay = 0;
-
     for(int i=0; i<totalClothes; ++i)
     {
         auto pair = clothIntervals[i];
 
         delay = std::max(delay, pair.second-clothes[i].second);
 
-        std::cout << "(" << pair.first/2 << "," << pair.second << ") "
-             << "Atraso: " << pair.second-clothes[i].second << std::endl;
+        hoursInterval = hours + (pair.second - pair.first);
+
+        if ( hoursInterval >= 17 ) {
+            day = day + hoursInterval/17;
+            hours = hoursInterval%17 ;
+            realtime = 8 + hours;
+        }else  {hours = hoursInterval; realtime = hours;};
+
+        std::cout << "Dia: " << day << " Hora: " << realtime;
+
+        //std::cout << "(" << pair.first << "," << pair.second << ") ";
+
+        std::cout << " ";
+
+        if(pair.second-clothes[i].second >= 0 ) {
+            if(day == 0){
+                std::cout << "Atraso: " << pair.second-clothes[i].second
+                        << " horas" << "\n";
+            }
+            else {
+                if( day == 1) {
+                    std::cout << "Atraso: " << day
+                            << " dia e "<< pair.second-clothes[i].second
+                            << " horas" << "\n";
+                }
+                else {
+                std::cout << "Atraso: " << day
+                        << " dias e "<< pair.second-clothes[i].second
+                        << " horas" << "\n";
+                }
+            }
+        } else {
+            if(day == 0){
+                std::cout << "Adiantado: " << (pair.second-clothes[i].second)*-1
+                        << " horas" << "\n";
+            }
+            else {
+                if( day == 1) {
+                    std::cout << "Adiantado: "
+                            << (pair.second-clothes[i].second)*-1
+                            << " horas" << "\n";
+                }
+                else {
+                std::cout << "Adiantado: "
+                        << (pair.second-clothes[i].second)*-1
+                        << " horas" << "\n";
+                }
+            }
+        }
     }
 
-    std::cout << "\nAtraso máximo é de " << delay << std::endl;
+    if (delay == 0) {
+        std::cout << "\nNão ouve atrasos" << '\n';
+    } else std::cout << "\nAtraso máximo é de horas " << delay << '\n';
 }
+
