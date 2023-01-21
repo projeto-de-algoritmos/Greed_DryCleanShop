@@ -11,11 +11,17 @@
 
 ## Video
 
+https://youtu.be/iLnXneFH5DY
+
 ## Sobre
 
-O projeto tem a implementação de pequena empresa de lavanderia chamada DryClothes, onde tem como início das operações às 8 horas e termina às 17 horas. Os clientes deixam na lavanderia seu nome, quantidade e o tempo que podem buscar seus conjuntos de roupas e tecidos. Com a ajuda do algoritmo ganancioso minimize lateness, iremos otimizar a ordem do trabalho na empresa.
+O projeto tem a implementação de pequena empresa de lavanderia chamada DryCleanShop, onde tem como início das operações às 8 horas e termina às 17 horas. Os clientes deixam na lavanderia seu nome, quantidade e o tempo que podem buscar seus conjuntos de roupas e tecidos. Com a ajuda do algoritmo ganancioso minimize lateness, iremos otimizar a ordem do trabalho na empresa.
 
 ## Screenshots
+
+![mapaLista](doc/greed1.png)
+
+![mapaOtimização](doc/greed2.png)
 
 ## Instalação
 **Linguagem**: C++<br>
@@ -27,7 +33,7 @@ De preferência, para não ocorrer problemas, use o Ubuntu.
 
 Para clonar:
 
-`git clone https://github.com/projeto-de-algoritmos/Greed_DryClothes.git`
+`git clone https://github.com/projeto-de-algoritmos/Greed_DryCleanShop.git`
 
 Para compilar o programa:
 
